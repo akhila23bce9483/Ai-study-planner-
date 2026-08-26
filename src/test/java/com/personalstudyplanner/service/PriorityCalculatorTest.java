@@ -1,0 +1,3 @@
+package com.personalstudyplanner.service;
+import com.personalstudyplanner.model.Topic;import org.junit.jupiter.api.Test;import java.time.LocalDate;import static org.junit.jupiter.api.Assertions.*;
+class PriorityCalculatorTest{@Test void urgentImportantTopicRanksHigher(){Topic a=new Topic(1,"A",5,5,120,LocalDate.now().plusDays(1),0);Topic b=new Topic(2,"B",2,2,60,LocalDate.now().plusDays(30),0);assertTrue(new PriorityCalculator().calculatePriority(a)>new PriorityCalculator().calculatePriority(b));}@Test void remainingWorkUsesProgress(){Topic t=new Topic(1,"A",3,3,100,LocalDate.now().plusDays(10),40);assertEquals(60,t.remainingMinutes());}}
