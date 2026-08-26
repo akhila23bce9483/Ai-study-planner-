@@ -1,0 +1,3 @@
+package com.personalstudyplanner.service;
+import com.personalstudyplanner.model.Topic; import java.util.*;
+public class RecommendationEngine { public List<String> recommend(List<Topic> topics,int availableMinutes){List<String> r=new ArrayList<>();if(new EmergencyPlanner().shouldActivate(topics,availableMinutes))r.add("Priority Preparation Mode is recommended.");if(topics.stream().anyMatch(t->t.getPracticeScore()<60))r.add("Revise weak topics before moving to advanced questions.");if(topics.stream().anyMatch(t->t.getMissedSessions()>=2))r.add("Consider splitting repeatedly missed topics into smaller sessions.");if(topics.stream().anyMatch(t->t.getPyqFrequency()>=3))r.add("Focus on topics that appear frequently in previous-year papers.");return r;} }
