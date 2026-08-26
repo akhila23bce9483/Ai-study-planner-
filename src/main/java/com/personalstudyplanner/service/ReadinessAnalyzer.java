@@ -1,0 +1,3 @@
+package com.personalstudyplanner.service;
+import com.personalstudyplanner.model.Topic; import java.util.*;
+public class ReadinessAnalyzer { public String analyze(List<Topic> topics){if(topics.isEmpty())return "Needs Revision";long completed=topics.stream().filter(t->t.getStatus()==Topic.Status.COMPLETED).count();double practice=topics.stream().mapToDouble(Topic::getPracticeScore).average().orElse(0);long weak=topics.stream().filter(t->t.getPracticeScore()<60).count();if(completed==topics.size()&&practice>=80&&weak==0)return "Ready";if(completed>=topics.size()*0.8&&practice>=60)return "Almost Ready";return "Needs Revision";} }
