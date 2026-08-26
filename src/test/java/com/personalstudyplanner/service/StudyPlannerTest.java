@@ -1,0 +1,3 @@
+package com.personalstudyplanner.service;
+import com.personalstudyplanner.model.Topic;import org.junit.jupiter.api.Test;import java.time.LocalDate;import java.util.*;import static org.junit.jupiter.api.Assertions.*;
+class StudyPlannerTest{@Test void planNeverExceedsAvailableTime(){var topics=List.of(new Topic(1,"Trees",5,5,180,LocalDate.now().plusDays(2),0),new Topic(2,"OOP",3,4,60,LocalDate.now().plusDays(5),0));var plan=new StudyPlanner(new PriorityCalculator()).generate(topics,120);assertTrue(plan.stream().mapToInt(x->x.durationMinutes()).sum()<=120);}@Test void completedTopicsAreExcluded(){var t=new Topic(1,"Done",3,3,60,LocalDate.now().plusDays(5),100);assertTrue(new StudyPlanner(new PriorityCalculator()).generate(List.of(t),60).isEmpty());}}
