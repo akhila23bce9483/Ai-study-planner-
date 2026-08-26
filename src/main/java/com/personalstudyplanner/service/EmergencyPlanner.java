@@ -1,0 +1,3 @@
+package com.personalstudyplanner.service;
+import com.personalstudyplanner.model.Topic; import java.util.*;
+public class EmergencyPlanner { public boolean shouldActivate(List<Topic> topics,int availableMinutes){int remaining=topics.stream().filter(t->t.getStatus()!=Topic.Status.COMPLETED).mapToInt(Topic::remainingMinutes).sum();return availableMinutes<remaining;} public List<Topic> prioritize(List<Topic> topics){List<Topic> c=new ArrayList<>(topics);c.sort(Comparator.comparingInt(Topic::getImportance).reversed().thenComparingInt(Topic::getPyqFrequency).reversed().thenComparingInt(Topic::remainingMinutes).reversed());return c;} }
