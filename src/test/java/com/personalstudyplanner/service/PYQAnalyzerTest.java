@@ -1,0 +1,3 @@
+package com.personalstudyplanner.service;
+import com.personalstudyplanner.model.PYQQuestion;import org.junit.jupiter.api.Test;import java.util.*;import static org.junit.jupiter.api.Assertions.*;
+class PYQAnalyzerTest{@Test void keywordClassificationWorks(){var a=new PYQAnalyzer();a.addKeywords(10,"dijkstra","graph");assertEquals(10,a.classify("Explain Dijkstra's algorithm"));assertEquals(-1,a.classify("Explain sorting"));}@Test void frequencyCountsQuestions(){var a=new PYQAnalyzer();var q=List.of(new PYQQuestion("a",2023,1,"BASIC"),new PYQQuestion("b",2024,1,"BASIC"),new PYQQuestion("c",2024,2,"BASIC"));assertEquals(2,a.frequency(q).get(1));}}
