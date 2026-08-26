@@ -1,0 +1,3 @@
+package com.personalstudyplanner.service;
+import com.personalstudyplanner.model.Topic;import org.junit.jupiter.api.Test;import java.time.LocalDate;import java.util.*;import static org.junit.jupiter.api.Assertions.*;
+class EmergencyPlannerTest{@Test void emergencyModeActivatesWhenTimeIsInsufficient(){var t=new Topic(1,"DP",5,5,180,LocalDate.now().plusDays(1),0);assertTrue(new EmergencyPlanner().shouldActivate(List.of(t),60));}@Test void readinessRequiresCompletionAndGoodPractice(){var t=new Topic(1,"OOP",3,5,60,LocalDate.now().plusDays(10),100);t.setPracticeScore(90);assertEquals("Ready",new ReadinessAnalyzer().analyze(List.of(t)));}}
